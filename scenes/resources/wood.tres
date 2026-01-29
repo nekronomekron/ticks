@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseResource" load_steps=2 format=3 uid="uid://c4kmtf5l6ka02"]
+
+[ext_resource type="Script" uid="uid://bpix00766s7i0" path="res://scripts/core/resources/base_resource.gd" id="1_r1tf6"]
+
+[resource]
+script = ExtResource("1_r1tf6")
+identifier = &"Wood"
+metadata/_custom_type_script = "uid://bpix00766s7i0"

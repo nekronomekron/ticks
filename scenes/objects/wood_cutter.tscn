@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsqom1ly2a2me"]
+
+[ext_resource type="PackedScene" uid="uid://o4d2bjeam8s0" path="res://scenes/objects/base_object.tscn" id="1_0nfe0"]
+[ext_resource type="Resource" uid="uid://c4kmtf5l6ka02" path="res://scenes/resources/wood.tres" id="2_4i6r2"]
+[ext_resource type="Script" uid="uid://dsslprcobcyjf" path="res://scripts/objects/wood_cutter.gd" id="2_8ogjy"]
+[ext_resource type="Script" uid="uid://bpix00766s7i0" path="res://scripts/core/resources/base_resource.gd" id="3_b886r"]
+
+[node name="WoodCutter" instance=ExtResource("1_0nfe0")]
+script = ExtResource("2_8ogjy")
+game_resource = ExtResource("2_4i6r2")
+requirements = Dictionary[ExtResource("3_b886r"), float]({
+ExtResource("2_4i6r2"): 10.0
+})
+costs = Dictionary[ExtResource("3_b886r"), float]({
+ExtResource("2_4i6r2"): 10.0
+})
+has_action_button = false
+
+[connection signal="on_ticks_filled" from="." to="." method="_on_on_ticks_filled"]

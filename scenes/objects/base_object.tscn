@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://o4d2bjeam8s0"]
+
+[ext_resource type="Script" uid="uid://wgsovgt5hhs6" path="res://scripts/objects/base_object.gd" id="1_nrej2"]
+[ext_resource type="Texture2D" uid="uid://dj1rfg5fqo5k0" path="res://assets/ui/rect2.png" id="1_tb7d3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xiusb"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="BaseObject" type="NinePatchRect"]
+custom_minimum_size = Vector2(0, 180)
+offset_right = 383.0
+offset_bottom = 180.0
+texture = ExtResource("1_tb7d3")
+region_rect = Rect2(0, 0, 512, 360)
+patch_margin_left = 13
+patch_margin_top = 14
+patch_margin_right = 13
+patch_margin_bottom = 23
+script = ExtResource("1_nrej2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 134.0
+offset_bottom = 31.0
+text = "Resource Name"
+label_settings = SubResource("LabelSettings_xiusb")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 117.0
+offset_right = 138.0
+offset_bottom = 159.0
+keep_pressed_outside = true
+text = "Action"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 14.0
+offset_right = 357.0
+offset_bottom = 38.0
+button_pressed = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 67.0
+offset_right = 368.0
+offset_bottom = 107.0
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 117.0
+offset_right = 281.0
+offset_bottom = 159.0
+keep_pressed_outside = true
+text = "Buy"
+
+[connection signal="pressed" from="Button" to="." method="_on_action_button_pressed"]
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

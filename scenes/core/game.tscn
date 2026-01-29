@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://djtos0jxbohmw"]
+
+[ext_resource type="Script" uid="uid://bivwsc8rmpd8q" path="res://scripts/core/time_manager.gd" id="1_2bsr5"]
+[ext_resource type="Script" uid="uid://cj7m7v6i4ux6a" path="res://scripts/core/game.gd" id="1_fndv4"]
+[ext_resource type="Script" uid="uid://brf1a433i0dxu" path="res://scripts/core/game_manager.gd" id="3_6ea2g"]
+[ext_resource type="PackedScene" uid="uid://dsqom1ly2a2me" path="res://scenes/objects/wood_cutter.tscn" id="3_6n8i3"]
+[ext_resource type="Script" uid="uid://c53y6k5i7fnb4" path="res://scripts/core/season.gd" id="3_e12ky"]
+[ext_resource type="PackedScene" uid="uid://um1a2ctewtyo" path="res://scenes/objects/chop_wood.tscn" id="4_e12ky"]
+[ext_resource type="Script" uid="uid://cjty5bytsb6st" path="res://scripts/core/storage_manager.gd" id="4_r4ld4"]
+[ext_resource type="PackedScene" uid="uid://btrna5u886a32" path="res://scenes/resources/resource_card.tscn" id="5_mm661"]
+[ext_resource type="Script" uid="uid://bpix00766s7i0" path="res://scripts/core/resources/base_resource.gd" id="6_bevlm"]
+[ext_resource type="Resource" uid="uid://c4kmtf5l6ka02" path="res://scenes/resources/wood.tres" id="7_qoew0"]
+[ext_resource type="PackedScene" uid="uid://m2yuelfkj5xn" path="res://scenes/core/map_generator.tscn" id="10_f570d"]
+[ext_resource type="Script" uid="uid://bfp52i21ohgex" path="res://scenes/core/fps_label.gd" id="10_qoew0"]
+[ext_resource type="Script" uid="uid://dntagp7q3yh0k" path="res://scripts/core/map_manager.gd" id="12_ce8je"]
+
+[sub_resource type="Resource" id="Resource_r4ld4"]
+script = ExtResource("3_e12ky")
+modifiers = Dictionary[ExtResource("6_bevlm"), float]({
+ExtResource("7_qoew0"): 1.0
+})
+metadata/_custom_type_script = "uid://c53y6k5i7fnb4"
+
+[sub_resource type="Resource" id="Resource_6ea2g"]
+script = ExtResource("3_e12ky")
+modifiers = Dictionary[ExtResource("6_bevlm"), float]({
+ExtResource("7_qoew0"): 0.5
+})
+metadata/_custom_type_script = "uid://c53y6k5i7fnb4"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f570d"]
+
+[node name="Node2D" type="Control" unique_id=1783909517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fndv4")
+
+[node name="Time Manager" type="Node" parent="." unique_id=808146339]
+script = ExtResource("1_2bsr5")
+days_per_season = 5
+seasons = Array[ExtResource("3_e12ky")]([SubResource("Resource_r4ld4"), SubResource("Resource_6ea2g")])
+
+[node name="Storage Manager" type="Node" parent="." unique_id=939423855 node_paths=PackedStringArray("objects_container")]
+script = ExtResource("4_r4ld4")
+resource_card_template = ExtResource("5_mm661")
+objects_container = NodePath("../Panel/ScrollContainer2/VBoxContainer")
+
+[node name="MapGenerator" parent="." unique_id=1239140759 instance=ExtResource("10_f570d")]
+
+[node name="Game Manager" type="Node" parent="." unique_id=1804702331 node_paths=PackedStringArray("time_manager", "storage_manager", "map_generator", "objects_container")]
+script = ExtResource("3_6ea2g")
+time_manager = NodePath("../Time Manager")
+storage_manager = NodePath("../Storage Manager")
+map_generator = NodePath("../MapGenerator")
+start_object_templates = Array[PackedScene]([ExtResource("4_e12ky")])
+available_object_templates = Array[PackedScene]([ExtResource("3_6n8i3")])
+objects_container = NodePath("../Panel/ScrollContainer/VBoxContainer")
+
+[node name="Map Manager" type="Node" parent="." unique_id=1642722158]
+script = ExtResource("12_ce8je")
+
+[node name="Panel" type="Panel" parent="." unique_id=1849005576]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f570d")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1500646835]
+z_index = 1
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 460.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer" unique_id=1737219569]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Panel" unique_id=1556713341]
+layout_mode = 0
+offset_left = 437.00006
+offset_right = 787.00006
+offset_bottom = 460.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer2" unique_id=139797878]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FPSLabel" type="Label" parent="Panel" unique_id=989198539]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+script = ExtResource("10_qoew0")

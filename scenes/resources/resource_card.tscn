@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://btrna5u886a32"]
+
+[ext_resource type="Texture2D" uid="uid://mudvgga8wwl3" path="res://assets/ui/tooltip_ninepatchpanel_3.png" id="1_e6uiy"]
+[ext_resource type="Script" uid="uid://df38w25g6wgpy" path="res://scripts/resources/resource_card.gd" id="1_rc7wr"]
+
+[node name="ResourceCard" type="Node2D"]
+script = ExtResource("1_rc7wr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+offset_right = 327.0
+offset_bottom = 45.0
+texture = ExtResource("1_e6uiy")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="NameLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 134.0
+offset_bottom = 31.0
+text = "Resource Name"
+
+[node name="AmountLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 11.0
+offset_right = 318.0
+offset_bottom = 34.0
+text = "Amount"
+horizontal_alignment = 2

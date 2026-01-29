@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ck3ycbigh7bbl"]
+
+[ext_resource type="Script" uid="uid://dntagp7q3yh0k" path="res://scripts/core/map_manager.gd" id="1_prfkw"]
+
+[node name="MapManager" type="Node2D" unique_id=223523097]
+script = ExtResource("1_prfkw")
+
+[node name="TerrainLayer" type="TileMapLayer" parent="." unique_id=43142255]
+texture_filter = 1
+scale = Vector2(3, 3)
+
+[node name="ObstaclesLayer" type="TileMapLayer" parent="." unique_id=1656309263]
+texture_filter = 1
+scale = Vector2(3, 3)

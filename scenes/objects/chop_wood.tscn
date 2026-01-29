@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://um1a2ctewtyo"]
+
+[ext_resource type="Script" uid="uid://c4sqbxj4fprjv" path="res://scripts/objects/chop_wood.gd" id="1_8xb8l"]
+[ext_resource type="PackedScene" uid="uid://o4d2bjeam8s0" path="res://scenes/objects/base_object.tscn" id="1_i02m8"]
+[ext_resource type="Resource" uid="uid://c4kmtf5l6ka02" path="res://scenes/resources/wood.tres" id="3_n4j7s"]
+
+[node name="ChopWood" instance=ExtResource("1_i02m8")]
+script = ExtResource("1_8xb8l")
+game_resource = ExtResource("3_n4j7s")
+has_progress_bar = false
+can_buy = false
+
+[connection signal="on_action_triggered" from="." to="." method="on_chop_wood"]

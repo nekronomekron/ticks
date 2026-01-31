@@ -1,6 +1,12 @@
-extends Control
+extends Node
 
-@onready var panel: Panel = $Panel
+@onready var panel: Panel = $CanvasLayer/Panel
+
+@onready var camera: Camera2D = $Camera2D
+
+@onready var map_manager: MapManager = $MapManager
+
+
 
 func _ready() -> void:
 	panel.offset_top = 10

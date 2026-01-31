@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dntagp7q3yh0k" path="res://scripts/core/map_manager.gd" id="1_prfkw"]
 
-[node name="MapManager" type="Node2D" unique_id=223523097]
+[node name="MapManager" type="Node" unique_id=766042632]
 script = ExtResource("1_prfkw")
 
 [node name="TerrainLayer" type="TileMapLayer" parent="." unique_id=43142255]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b5sh0kjuhfulk"]
+
+[ext_resource type="Texture2D" uid="uid://vjk4jxn3nrfk" path="res://assets/spritesheet_16x16.png" id="1_xvatx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n63q"]
+atlas = ExtResource("1_xvatx")
+region = Rect2(208, 336, 16, 16)
+
+[node name="WoodChopper" type="Node2D" unique_id=1992393532]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=942490268]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_1n63q")

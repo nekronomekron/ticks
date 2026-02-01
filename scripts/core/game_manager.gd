@@ -10,10 +10,10 @@ var drag_offset: Vector2
 func _ready() -> void:
 	init(randi())
 
-func init(seed: int) -> void:
+func init(map_seed: int) -> void:
 	var map_settings: MapSettings = MapSettings.new()
-	map_settings.seed = seed
-	map_settings.type = rand_from_seed(seed)[0] % MapSettings.MapType.size()
+	map_settings.map_seed = map_seed
+	map_settings.type = (map_settings.get_rand() % MapSettings.MapType.size()) as MapSettings.MapType
 	
 	map_manager.init(map_settings)
 	map_manager.center_camera(get_viewport().get_camera_2d())
@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			map_manager.zoom_camera_at_point(get_viewport().get_camera_2d(), -0.1, get_global_mouse_position())
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_dragging:
 		var drag:Vector2 = drag_offset - get_viewport().get_mouse_position()
 		

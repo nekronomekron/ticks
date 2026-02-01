@@ -17,7 +17,7 @@ var _used_rect: Rect2i = Rect2i(0, 0, 0, 0)
 
 func init(map_settings: MapSettings) -> void:
 	_map_settings = map_settings
-	_map_settings.type = 0
+	_map_settings.type = MapSettings.MapType.DESSERT
 	_map_theme = map_themes[_map_settings.type]
 	
 	terrain_layer.tile_set = _map_theme.tileset
